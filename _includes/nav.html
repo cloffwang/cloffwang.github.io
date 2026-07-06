@@ -12,8 +12,9 @@
         {% endif %}
       {% endfor %}
 
-      {% for post in site.posts %}
-        <li><a class="{% if page.url == post.url %}active{% endif %}" href="{{ post.url }}">{{ post.title }}</a></li>
+      {% assign projects = site.projects | sort: 'order' %}
+      {% for project in projects %}
+        <li><a href="/#{{ project.title | slugify }}">{{ project.title }}</a></li>
       {% endfor %}
     </ul>
   </div>

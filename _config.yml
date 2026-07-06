@@ -20,6 +20,10 @@ plugins:
   - jekyll-feed
   - jekyll-paginate
 
+collections:
+  projects:
+    output: false
+
 author:
   name:           'Chenting Wang'
   url:            
