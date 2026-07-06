@@ -29,51 +29,30 @@ title: Home
   <h2 class="prompt">ls ./projects</h2>
 
   <div class="project-grid">
-    <article class="project-card">
-      <h3>quality-dashboard</h3>
+    {% assign projects = site.projects | sort: 'order' %}
+    {% for project in projects %}
+    <article class="project-card" id="{{ project.title | slugify }}">
+      <h3>{{ project.title }}</h3>
       <p>
-        A Playwright test suite for a mock "Quality &amp; Uptime Control Center" dashboard, built to
-        show how much richer an Allure report can be when tests are instrumented deliberately.
+        {{ project.summary }}
       </p>
       <ul>
-        <li>Per-step screenshots on UI specs and native HTTP-exchange attachments (request/response logs) on API specs, all surfaced in the Allure report</li>
-        <li>Every test carries an explicit description and suite label, enforced by a lint check so reports stay self-documenting</li>
-        <li>GitHub Actions runs the UI/API suites on a schedule and publishes the generated Allure reports (with history) to GitHub Pages</li>
-        <li>The dashboard itself (Next.js, fully mocked data) exists only to give the suite something realistic to test against</li>
+        {% for bullet in project.bullets %}
+        <li>{{ bullet }}</li>
+        {% endfor %}
       </ul>
       <div class="tags">
-        <span class="tag">Playwright</span>
-        <span class="tag">Allure</span>
-        <span class="tag">TypeScript</span>
-        <span class="tag">CI/CD</span>
-        <span class="tag">Next.js</span>
+        {% for tag in project.tags %}
+        <span class="tag">{{ tag }}</span>
+        {% endfor %}
       </div>
       <div class="project-links">
-        <a href="https://github.com/cloffwang/quality-dashboard">GitHub &rarr;</a>
-        <a href="https://cloffwang.github.io/quality-dashboard/">Allure report &rarr;</a>
+        <a href="{{ project.github }}">GitHub &rarr;</a>
+        {% if project.report %}
+        <a href="{{ project.report }}">{{ project.report_label | default: "Report" }} &rarr;</a>
+        {% endif %}
       </div>
     </article>
-    <article class="project-card">
-      <h3>selenium-demo</h3>
-      <p>
-        A Web UI testing framework using Java, Selenium, and Cucumber with a BDD approach.
-      </p>
-      <ul>
-        <li>Flexible execution on local, CI, Selenium Grid, and BrowserStack via YAML configuration</li>
-        <li>Parallel execution with thread-safe browser driver management using TestNG data providers</li>
-        <li>Integrated with GitHub Actions for CI, with reporting via Allure</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">Java</span>
-        <span class="tag">Selenium</span>
-        <span class="tag">Cucumber</span>
-        <span class="tag">TestNG</span>
-        <span class="tag">CI/CD</span>
-      </div>
-      <div class="project-links">
-        <a href="https://github.com/cloffwang/selenium-demo">GitHub &rarr;</a>
-        <a href="https://cloffwang.github.io/selenium-demo/">Allure report &rarr;</a>
-      </div>
-    </article>
+    {% endfor %}
   </div>
 </section>
