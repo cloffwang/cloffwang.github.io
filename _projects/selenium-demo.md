@@ -1,5 +1,5 @@
 ---
-order: 2
+order: 3
 title: selenium-demo
 summary: >-
   A Web UI testing framework using Java, Selenium, and Cucumber with a BDD approach.

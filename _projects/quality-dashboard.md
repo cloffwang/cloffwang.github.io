@@ -1,5 +1,5 @@
 ---
-order: 1
+order: 2
 title: quality-dashboard
 summary: >-
   A Playwright test suite for a mock "Quality &amp; Uptime Control Center" dashboard, built to
