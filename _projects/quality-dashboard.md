@@ -18,5 +18,5 @@ tags:
   - Next.js
 github: https://github.com/cloffwang/quality-dashboard
 report: https://cloffwang.github.io/quality-dashboard/
-report_label: Allure report
+report_label: Live run calendar
 ---
